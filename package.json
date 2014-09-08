@@ -1,0 +1,41 @@
+{
+  "name": "react-list-view",
+  "version": "0.0.1",
+  "description": "Infinite list view component",
+  "main": "lib/index.js",
+  "scripts": {
+    "prepublish": "gulp --require coffee-script/register",
+    "watch": "NODE_ENV=debug gulp watch --require coffee-script/register",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/morhaus/react-list-view.git"
+  },
+  "keywords": [
+    "react",
+    "infinite",
+    "list",
+    "listview",
+    "scroll"
+  ],
+  "authors": [
+    "Morhaus <a.kirszenberg@gmail.com>"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "browserify": "^5.11.1",
+    "coffee-script": "1.8.0",
+    "coffeeify": "^0.7.0",
+    "gulp": "3.8.8",
+    "gulp-coffee": "2.2.0",
+    "gulp-sourcemaps": "1.1.4",
+    "gulp-streamify": "0.0.5",
+    "gulp-uglify": "^1.0.1",
+    "gulpify": "^0.1.1",
+    "vinyl-source-stream": "^0.1.1"
+  },
+  "dependencies": {
+    "react": "^0.11.1"
+  }
+}

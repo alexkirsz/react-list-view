@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ReactListView: simple</title>
+  <style>
+    .ReactListView {
+      height: 300px;
+      position: relative;
+      overflow: auto;
+      border: 2px solid #DDD;
+    }
+    .ReactListView-container {
+      overflow: hidden;
+    }
+    .ReactListView-item {
+      position: absolute;
+    }
+  </style>
+</head>
+<body>
+  <script src="http://fb.me/JSXTransformer-0.11.1.js"></script>
+  <script type="text/javascript" src="../dist/external.js"></script>
+  <script type="text/jsx">
+    /** @jsx React.DOM */
+
+    var React = require('react');
+    var ReactListView = require('react-list-view');
+
+    var SimpleExample = React.createClass({
+      displayName: 'SimpleExample',
+
+      renderItem: function(idx) {
+        return <div key={idx}>Item {idx}</div>;
+      },
+
+      render: function() {
+        return <ReactListView
+          itemCount={100000}
+          itemHeight={20}
+          itemFactory={this.renderItem} />;
+      }
+    });
+      
+    React.renderComponent(<SimpleExample />, document.body);
+  </script>
+</body>
+</html>

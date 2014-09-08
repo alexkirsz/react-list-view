@@ -1,0 +1,5 @@
+src/
+examples/
+dist/
+bower.json
+gulpfile.coffee

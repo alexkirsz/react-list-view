@@ -1,0 +1,27 @@
+{
+  "name": "react-list-view",
+  "version": "0.0.1",
+  "homepage": "https://github.com/morhaus/react-list-view",
+  "authors": [
+    "Morhaus <a.kirszenberg@gmail.com>"
+  ],
+  "description": "Infinite list view component",
+  "main": "dist/react-list-view.js",
+  "keywords": [
+    "react",
+    "infinite",
+    "list",
+    "listview",
+    "scroll"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "gulpfile.coffee",
+    "package.json",
+    "src",
+    "lib",
+    "examples"
+  ]
+}
