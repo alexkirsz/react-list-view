@@ -46,18 +46,18 @@ ReactListView = React.createClass({
     });
   },
   _getTopRenderBoundary: function() {
-    if (this.props.topBoundary != null) {
-      return Math.floor(this.props.topBoundary / this.props.itemHeight);
-    } else {
-      return Math.floor(this.state.scrollTop / this.props.itemHeight);
-    }
+    var boundary;
+    boundary = this.props.topBoundary != null ? this.props.topBoundary : this.state.scrollTop;
+    return Math.floor(boundary / this.props.itemHeight);
   },
   _getBottomRenderBoundary: function() {
-    if (this.props.bottomBoundary != null) {
-      return Math.ceil(this.props.bottomBoundary / this.props.itemHeight);
-    } else {
-      return Math.ceil((this.state.scrollTop + this.state.clientHeight) / this.props.itemHeight);
+    var boundary, maxBoundary;
+    boundary = this.props.bottomBoundary != null ? this.props.bottomBoundary : this.state.scrollTop + this.state.clientHeight;
+    maxBoundary = this.props.itemHeight * this.props.itemCount;
+    if (boundary > maxBoundary) {
+      boundary = maxBoundary;
     }
+    return Math.ceil(boundary / this.props.itemHeight);
   },
   render: function() {
     var idx, items;

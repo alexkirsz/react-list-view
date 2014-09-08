@@ -33,16 +33,25 @@ ReactListView = React.createClass
       scrollTop: @getDOMNode().scrollTop
 
   _getTopRenderBoundary: ->
-    if @props.topBoundary?
-      Math.floor @props.topBoundary / @props.itemHeight
-    else
-      Math.floor @state.scrollTop / @props.itemHeight
+    boundary =
+      if @props.topBoundary?
+        @props.topBoundary
+      else
+        @state.scrollTop
+
+    Math.floor boundary / @props.itemHeight
 
   _getBottomRenderBoundary: ->
-    if @props.bottomBoundary?
-      Math.ceil @props.bottomBoundary / @props.itemHeight
-    else
-      Math.ceil (@state.scrollTop + @state.clientHeight) / @props.itemHeight
+    boundary =
+      if @props.bottomBoundary?
+        @props.bottomBoundary
+      else
+        @state.scrollTop + @state.clientHeight
+
+    maxBoundary = @props.itemHeight * @props.itemCount
+    boundary = maxBoundary if boundary > maxBoundary
+
+    Math.ceil boundary / @props.itemHeight
 
   render: ->
     items =
