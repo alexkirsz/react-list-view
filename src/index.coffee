@@ -1,9 +1,9 @@
-react = require 'react'
-dom = react.DOM
+React = require 'react'
+dom = React.DOM
 
 transform = require './transform'
 
-ReactListView = react.createClass
+ReactListView = React.createClass
   displayName: 'ReactListView'
 
   propTypes:
