@@ -54,7 +54,7 @@ gulp.task 'dist:minified', (done) ->
     .pipe (streamify uglify())
     .pipe (gulp.dest 'dist/')
 
-gulp.task 'external', (done) ->
+gulp.task 'external', ['src'], (done) ->
   bd = browserify
     extensions: ['.coffee']
     debug: yes
