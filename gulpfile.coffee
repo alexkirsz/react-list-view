@@ -28,6 +28,7 @@ gulp.task 'dist', (done) ->
     entries: './src/index.coffee'
     extensions: ['.coffee']
     standalone: 'react-list-view'
+    debug: no
 
   bd
     .transform coffeeify
@@ -41,6 +42,7 @@ gulp.task 'dist:minified', (done) ->
     entries: './src/index.coffee'
     extensions: ['.coffee']
     standalone: 'react-list-view'
+    debug: no
 
   bd
     .transform coffeeify
@@ -53,7 +55,7 @@ gulp.task 'dist:minified', (done) ->
 gulp.task 'external', (done) ->
   bd = browserify
     extensions: ['.coffee']
-    debug: debug
+    debug: yes
 
   bd
     .require './', expose: 'react-list-view'
