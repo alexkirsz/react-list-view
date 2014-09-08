@@ -68,6 +68,6 @@ gulp.task 'external', ['src'], (done) ->
     .pipe (gulp.dest 'dist/')
 
 gulp.task 'watch', ['default'], ->
-  gulp.watch 'src/**/*.coffee', ['external']
+  gulp.watch 'src/**/*.coffee', ['src', 'dist', 'dist:minified', 'external']
 
 gulp.task 'default', ['src', 'dist', 'dist:minified', 'external']
