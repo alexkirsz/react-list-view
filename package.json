@@ -17,7 +17,8 @@
     "infinite",
     "list",
     "listview",
-    "scroll"
+    "scroll",
+    "react-component"
   ],
   "authors": [
     "Morhaus <a.kirszenberg@gmail.com>"

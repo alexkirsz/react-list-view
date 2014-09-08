@@ -12,7 +12,8 @@
     "infinite",
     "list",
     "listview",
-    "scroll"
+    "scroll",
+    "react-component"
   ],
   "license": "MIT",
   "ignore": [
