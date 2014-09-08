@@ -31,6 +31,7 @@ gulp.task 'dist', (done) ->
     debug: no
 
   bd
+    .external 'react'
     .transform coffeeify
     .bundle()
     .on 'error', done
@@ -45,6 +46,7 @@ gulp.task 'dist:minified', (done) ->
     debug: no
 
   bd
+    .external 'react'
     .transform coffeeify
     .bundle()
     .on 'error', done
