@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "scripts": {
     "start": "babel-node --stage 0 server",
-    "build": "babel --stage=0 -d lib/ src/"
+    "build": "rm -rf lib/ && babel --stage=0 -d lib/ src/"
   },
   "repository": {
     "type": "git",
