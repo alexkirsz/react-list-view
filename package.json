@@ -4,7 +4,7 @@
   "description": "Infinite list view component",
   "main": "lib/index.js",
   "scripts": {
-    "start": "babel-node --stage 0 server",
+    "start": "webpack-simple-server -d examples/ -p $PORT -c webpack.examples.config.js",
     "build": "rm -rf lib/ && babel --stage=0 -d lib/ src/"
   },
   "repository": {
@@ -30,7 +30,7 @@
     "react": "^0.13.0",
     "react-hot-loader": "^1.2.7",
     "webpack": "^1.9.10",
-    "webpack-dev-server": "^1.9.0"
+    "webpack-simple-server": "0.0.3"
   },
   "peerDependencies": {
     "react": "^0.13.0"

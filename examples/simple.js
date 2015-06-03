@@ -24,4 +24,4 @@ const SimpleExample = React.createClass({
 
 });
 
-React.render(<SimpleExample />, document.getElementById('container'));
+React.render(<SimpleExample />, document.body);

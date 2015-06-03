@@ -79,4 +79,4 @@ const MultipleExample = React.createClass({
 
 });
 
-React.render(<MultipleExample />, document.getElementById('container'));
+React.render(<MultipleExample />, document.body);
