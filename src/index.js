@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React, { PropTypes } from 'react/addons';
 import cx from 'classnames';
 
 import translate from './translate';
@@ -8,74 +8,128 @@ export default class ReactListView extends React.Component {
   static propTypes = {
     className: PropTypes.string,
     style: PropTypes.object,
-    itemCount: PropTypes.number.isRequired,
-    itemHeight: PropTypes.number.isRequired,
+
     renderItem: PropTypes.func.isRequired,
+
+    rowCount: PropTypes.number,
+    columnCount: PropTypes.number,
+    rowHeight: PropTypes.number,
+    columnWidth: PropTypes.number,
+
+    // Controllables
     clientHeight: PropTypes.number,
+    clientWidth: PropTypes.number,
     scrollTop: PropTypes.number,
+    scrollLeft: PropTypes.number,
   };
 
   static defaultProps = {
     className: null,
     style: {},
-    clientHeight: null,
-    scrollTop: null,
+
+    rowCount: 1,
+    columnCount: 1,
+    rowHeight: 0,
+    columnWidth: 0,
+
+    clientHeight: -1,
+    clientWidth: -1,
+    scrollTop: -1,
+    scrollLeft: -1,
   };
 
   constructor(props, context) {
     super(props, context);
 
-    this.state = {
-      clientHeight: 0,
-      scrollTop: 0,
-    };
+    this._isControlled = (
+      props.clientHeight !== -1 ||
+      props.clientWidth !== -1
+    );
+    if (!this._isControlled) {
+      this.state = {
+        clientHeight: -1,
+        clientWidth: -1,
+        scrollTop: -1,
+        scrollLeft: -1,
+      };
+    }
 
-    this._isControlled = props.clientHeight != null;
-    this._maxBoundary = props.itemHeight * props.itemCount;
     this._handleScroll = this._handleScroll.bind(this);
   }
 
   componentDidMount() {
     if (!this._isControlled) {
-      this.setState({
-        clientHeight: React.findDOMNode(this).clientHeight,
-        scrollTop: React.findDOMNode(this).scrollTop,
-      });
+      let {
+        clientHeight,
+        clientWidth,
+        scrollTop,
+        scrollLeft,
+      } = React.findDOMNode(this);
+      this.setState({ clientHeight, clientWidth, scrollTop, scrollLeft });
     }
   }
 
   _handleScroll(e) {
     this.setState({
       scrollTop: e.target.scrollTop,
+      scrollLeft: e.target.scrollLeft,
     });
   }
 
-  _getRenderBoundaries() {
-    let { scrollTop, clientHeight } = this._isControlled ? this.props : this.state;
-    let { itemHeight } = this.props;
-    let topBoundary = Math.floor(scrollTop / itemHeight);
-    let bottomBoundary = topBoundary + Math.ceil(clientHeight / itemHeight)
-    return [topBoundary, bottomBoundary];
+  _getBoundaries(scroll, itemDimension, clientDimension) {
+    let min = Math.floor(scroll / itemDimension);
+    let max = min + Math.ceil(clientDimension / itemDimension)
+    return [min, max];
   }
 
   render() {
-    let { style, className, itemCount, itemHeight, renderItem } = this.props;
+    let {
+      style,
+      className,
+      renderItem,
+      rowCount,
+      columnCount,
+      rowHeight,
+      columnWidth,
+    } = this.props;
 
-    let items = [];
-    let [top, bottom] = this._getRenderBoundaries();
-    for (let i = top; i < bottom; i++) {
-      items.push(
-        <div
-          key={i}
-          className="ReactListView-item"
-          style={{
-            position: 'absolute',
-            ...translate(0, i * itemHeight),
-          }}
-        >
-          {renderItem(i)}
-        </div>
+    let {
+      scrollTop,
+      scrollLeft,
+      clientHeight,
+      clientWidth,
+    } = this._isControlled ? this.props : this.state;
+
+    let minY, maxY;
+    if (rowHeight > 0) {
+      [minY, maxY] = this._getBoundaries(
+        scrollTop,
+        rowHeight,
+        clientHeight
       );
+    } else {
+      [minY, maxY] = [0, 0];
+    }
+
+    let minX, maxX;
+    if (columnWidth > 0) {
+      [minX, maxX] = this._getBoundaries(
+        scrollLeft,
+        columnWidth,
+        clientWidth
+      );
+    } else {
+      [minX, maxX] = [0, 0];
+    }
+
+    let items = {};
+    for (let y = minY; y <= maxY; y++) {
+      for (let x = minX; x <= maxX; x++) {
+        items[`${x},${y}`] = renderItem(x, y, {
+          ...translate(x * columnWidth, y * rowHeight),
+          position: 'absolute',
+        });
+      }
     }
 
     return (
@@ -92,10 +146,11 @@ export default class ReactListView extends React.Component {
           className="ReactListView-container"
           style={{
             overflow: 'hidden',
-            height: `${this._maxBoundary}px`,
+            height: rowHeight !== 0 ? `${rowHeight * rowCount}px` : 'auto',
+            width: columnWidth !== 0 ? `${columnWidth * columnCount}px` : 'auto',
           }}
         >
-          {items}
+          {React.addons.createFragment(items)}
         </div>
       </div>
     );
