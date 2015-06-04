@@ -71,3 +71,4 @@ To run the examples, simply clone the repo and then `npm install` and `npm start
 
 For even better performances, you should ignore pointer events inside the list with `pointer-events: none;`.
 
+When the `client{Height,Width}` and `scroll{Top,Left}` props of the component are controlled by a parent component, the scrollable container should have a CSS transform applied. See #2.

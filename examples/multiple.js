@@ -1,11 +1,13 @@
 import React from 'react';
 import ReactListView from '../src';
+import translate from '../src/translate';
 
 const multipleStyle = {
   height: 300,
   position: 'relative',
   overflow: 'auto',
   border: '2px solid #DDD',
+  transform: 'translate3d(0, 0, 0)'
 };
 
 const listStyle = {
@@ -45,7 +47,10 @@ const MultipleExample = React.createClass({
     let { scrollTop, clientHeight } = this.state;
 
     return (
-      <div onScroll={this._handleScroll} style={multipleStyle}>
+      <div
+        onScroll={this._handleScroll}
+        style={translate(0, 0, 0)}
+      >
         <div style={listStyle}>
           <ReactListView
             rowCount={100000}
