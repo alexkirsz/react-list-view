@@ -1,6 +1,6 @@
 {
   "name": "react-list-view",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Infinite list view component",
   "main": "lib/index.js",
   "scripts": {
