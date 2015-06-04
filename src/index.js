@@ -139,6 +139,12 @@ export default class ReactListView extends React.Component {
         style={{
           position: 'relative',
           overflow: 'auto',
+          // As per the CSS3 2D transform spec, transformed elements act as a
+          // containing block for fixed positioned descendants.
+          // Do not create a containing block if the component isn't controlled:
+          // the user should define their own containing block.
+          // See https://github.com/Morhaus/react-list-view/issues/2
+          ...(this._isControlled ? {} : translate(0, 0, 0)),
           ...style,
         }}
         onScroll={!this._isControlled && this._handleScroll}
@@ -149,9 +155,6 @@ export default class ReactListView extends React.Component {
             overflow: 'hidden',
             height: rowHeight !== 0 ? `${rowHeight * rowCount}px` : 'auto',
             width: columnWidth !== 0 ? `${columnWidth * columnCount}px` : 'auto',
-            // Transformed elements act as a containing block for fixed
-            // positioned descendants.
-            ...translate(0, 0, 0),
           }}
         >
           {React.addons.createFragment(items)}
