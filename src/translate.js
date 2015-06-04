@@ -5,7 +5,7 @@ let { style } = document.createElement('div');
 let propPrefixes = ['Webkit', 'Moz', 'O', 'ms'];
 
 function testProp(prop) {
-  if (style.hasOwnProperty(prop)) {
+  if (prop in style) {
     return prop;
   }
 
@@ -14,7 +14,7 @@ function testProp(prop) {
   let prefixedProp;
   for (let i = 0; i < propPrefixes.length; i++) {
     prefixedProp = propPrefixes[i] + capitalizedProp;
-    if (style.hasOwnProperty(prefixedProp)) {
+    if (prefixedProp in style) {
       return prefixedProp;
     }
   }
