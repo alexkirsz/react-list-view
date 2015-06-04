@@ -37,8 +37,8 @@ const MultipleExample = React.createClass({
     });
   },
 
-  _renderItem(index) {
-    return <div>Item #{index}</div>;
+  _renderItem(x, y, style) {
+    return <div style={style}>Item #{x},#{y}</div>;
   },
 
   render() {
@@ -48,8 +48,8 @@ const MultipleExample = React.createClass({
       <div onScroll={this._handleScroll} style={multipleStyle}>
         <div style={listStyle}>
           <ReactListView
-            itemCount={100000}
-            itemHeight={20}
+            rowCount={100000}
+            rowHeight={20}
             renderItem={this._renderItem}
             scrollTop={this.state.scrollTop}
             clientHeight={this.state.clientHeight}
@@ -57,8 +57,8 @@ const MultipleExample = React.createClass({
         </div>
         <div style={listStyle}>
           <ReactListView
-            itemCount={80000}
-            itemHeight={25}
+            rowCount={80000}
+            rowHeight={25}
             renderItem={this._renderItem}
             scrollTop={this.state.scrollTop}
             clientHeight={this.state.clientHeight}
@@ -66,8 +66,8 @@ const MultipleExample = React.createClass({
         </div>
         <div style={listStyle}>
           <ReactListView
-            itemCount={50000}
-            itemHeight={40}
+            rowCount={50000}
+            rowHeight={40}
             renderItem={this._renderItem}
             scrollTop={this.state.scrollTop}
             clientHeight={this.state.clientHeight}
