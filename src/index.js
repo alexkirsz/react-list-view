@@ -125,10 +125,11 @@ export default class ReactListView extends React.Component {
     let items = {};
     for (let y = minY; y <= maxY; y++) {
       for (let x = minX; x <= maxX; x++) {
-        items[`${x},${y}`] = renderItem(x, y, {
-          ...translate(x * columnWidth, y * rowHeight),
-          position: 'absolute',
-        });
+        items[`${x},${y}`] = renderItem(
+          x,
+          y,
+          translate(x * columnWidth, y * rowHeight, true)
+        );
       }
     }
 
@@ -148,6 +149,9 @@ export default class ReactListView extends React.Component {
             overflow: 'hidden',
             height: rowHeight !== 0 ? `${rowHeight * rowCount}px` : 'auto',
             width: columnWidth !== 0 ? `${columnWidth * columnCount}px` : 'auto',
+            // Transformed elements act as a containing block for fixed
+            // positioned descendants.
+            ...translate(0, 0, 0),
           }}
         >
           {React.addons.createFragment(items)}

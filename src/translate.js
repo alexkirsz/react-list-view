@@ -27,19 +27,22 @@ let perspectiveProp = testProp('perspective');
 let supports2D = !!transformProp;
 let supports3D = !!perspectiveProp;
 
-export default function translate(x, y) {
+export default function translate(x, y, addPosition = false) {
   if (supports3D) {
     return {
       [transformProp]: `translate3d(${x}px, ${y}px, 0)`,
+      position: addPosition ? 'fixed' : null,
     };
   }
   if (supports2D) {
     return {
       [transformProp]: `translate(${x}px, ${y}px)`,
+      position: addPosition ? 'fixed' : null,
     };
   }
   return {
     top: `${y}px`,
     left: `${x}px`,
+    position: addPosition ? 'absolute' : null,
   };
 }
