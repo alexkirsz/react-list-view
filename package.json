@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "scripts": {
     "start": "webpack-simple-server -d examples/ -p $PORT -c webpack.examples.config.js",
-    "build": "rm -rf lib/ && babel --stage=0 -d lib/ src/"
+    "prepublish": "rm -rf lib/ && babel --stage=0 -d lib/ src/"
   },
   "repository": {
     "type": "git",
