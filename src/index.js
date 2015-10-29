@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react/addons';
+import React, {PropTypes} from 'react';
+import createFragment from 'react-addons-create-fragment';
 import cx from 'classnames';
 
 import translate from './translate';
@@ -157,7 +158,7 @@ export default class ReactListView extends React.Component {
             width: columnWidth !== 0 ? `${columnWidth * columnCount}px` : 'auto',
           }}
         >
-          {React.addons.createFragment(items)}
+          {createFragment(items)}
         </div>
       </div>
     );
