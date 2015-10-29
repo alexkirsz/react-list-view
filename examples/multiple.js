@@ -3,17 +3,9 @@ import ReactDOM from 'react-dom';
 import ReactListView from '../src';
 import translate from '../src/translate';
 
-const multipleStyle = {
-  height: 300,
-  position: 'relative',
-  overflow: 'auto',
-  border: '2px solid #DDD',
-  transform: 'translate3d(0, 0, 0)'
-};
-
 const listStyle = {
   width: '33.3%',
-  float: 'left',
+  display: 'inline-block',
 };
 
 const MultipleExample = React.createClass({
@@ -50,7 +42,11 @@ const MultipleExample = React.createClass({
     return (
       <div
         onScroll={this._handleScroll}
-        style={translate(0, 0, 0)}
+        style={{
+          height: 400,
+          overflow: 'auto',
+          ...translate(0, 0, 0),
+        }}
       >
         <div style={listStyle}>
           <ReactListView
