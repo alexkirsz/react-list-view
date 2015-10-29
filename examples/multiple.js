@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import ReactListView from '../src';
 import translate from '../src/translate';
 
@@ -28,8 +29,8 @@ const MultipleExample = React.createClass({
 
   componentDidMount() {
     this.setState({
-      clientHeight: React.findDOMNode(this).clientHeight,
-      scrollTop: React.findDOMNode(this).scrollTop,
+      clientHeight: ReactDOM.findDOMNode(this).clientHeight,
+      scrollTop: ReactDOM.findDOMNode(this).scrollTop,
     });
   },
 
@@ -84,4 +85,4 @@ const MultipleExample = React.createClass({
 
 });
 
-React.render(<MultipleExample />, document.body);
+ReactDOM.render(<MultipleExample />, document.body);

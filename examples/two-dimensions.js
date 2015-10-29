@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import ReactListView from '../src';
 
 const TwoDimensionsExample = React.createClass({
@@ -27,4 +28,4 @@ const TwoDimensionsExample = React.createClass({
 
 });
 
-React.render(<TwoDimensionsExample />, document.body);
+ReactDOM.render(<TwoDimensionsExample />, document.body);

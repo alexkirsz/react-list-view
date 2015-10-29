@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import ReactListView from '../src';
 
 const SimpleExample = React.createClass({
@@ -24,4 +25,4 @@ const SimpleExample = React.createClass({
 
 });
 
-React.render(<SimpleExample />, document.body);
+ReactDOM.render(<SimpleExample />, document.body);

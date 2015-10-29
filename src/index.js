@@ -1,4 +1,5 @@
 import React, {PropTypes} from 'react';
+import ReactDOM from 'react-dom';
 import createFragment from 'react-addons-create-fragment';
 import cx from 'classnames';
 
@@ -65,7 +66,7 @@ export default class ReactListView extends React.Component {
         clientWidth,
         scrollTop,
         scrollLeft,
-      } = React.findDOMNode(this);
+      } = ReactDOM.findDOMNode(this);
       this.setState({ clientHeight, clientWidth, scrollTop, scrollLeft });
     }
   }
