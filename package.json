@@ -31,7 +31,8 @@
     "react-dom": "^0.14.1",
     "react-hot-loader": "^1.2.7",
     "webpack": "^1.9.10",
-    "webpack-simple-server": "0.0.3"
+    "webpack-dev-server": "^1.9.0",
+    "webpack-simple-server": "^0.1.0"
   },
   "peerDependencies": {
     "react": "^0.14.1",
