@@ -103,7 +103,9 @@ export default class ReactListView extends React.Component {
     } = this._isControlled ? this.props : this.state;
 
     let minY, maxY;
-    if (rowHeight > 0) {
+    if (clientHeight === -1) {
+      [minX, maxX] = [0, -1];
+    } else if (rowHeight > 0) {
       [minY, maxY] = this._getBoundaries(
         scrollTop,
         rowHeight,
@@ -114,7 +116,9 @@ export default class ReactListView extends React.Component {
     }
 
     let minX, maxX;
-    if (columnWidth > 0) {
+    if (clientWidth === -1) {
+      [minX, maxX] = [0, -1];
+    } else if (columnWidth > 0) {
       [minX, maxX] = this._getBoundaries(
         scrollLeft,
         columnWidth,
