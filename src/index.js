@@ -135,9 +135,14 @@ export default class ReactListView extends React.Component {
       }
     }
 
+    let listViewClassName = 'ReactListView';
+    if (className) {
+      listViewClassName += ' ' + className;
+    }
+
     return (
       <div
-        className={cx('ReactListView', className)}
+        className={listViewClassName}
         style={{
           position: 'relative',
           overflow: 'auto',

@@ -38,7 +38,6 @@
     "react-dom": "^15.0.1"
   },
   "dependencies": {
-    "classnames": "^2.1.2",
     "react-addons-create-fragment": "^15.0.1"
   }
 }
