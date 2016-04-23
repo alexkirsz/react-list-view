@@ -78,9 +78,12 @@ export default class ReactListView extends React.Component {
     });
   }
 
-  _getBoundaries(scroll, itemDimension, clientDimension) {
+  _getBoundaries(scroll, itemDimension, clientDimension, maxDimension) {
     let min = Math.floor(scroll / itemDimension);
-    let max = min + Math.ceil(clientDimension / itemDimension);
+    let max = Math.min(
+      maxDimension,
+      min + Math.ceil(clientDimension / itemDimension)
+    );
     return [min, max];
   }
 
@@ -109,7 +112,8 @@ export default class ReactListView extends React.Component {
       [minY, maxY] = this._getBoundaries(
         scrollTop,
         rowHeight,
-        clientHeight
+        clientHeight,
+        rowCount - 1
       );
     } else {
       [minY, maxY] = [0, 0];
@@ -122,7 +126,8 @@ export default class ReactListView extends React.Component {
       [minX, maxX] = this._getBoundaries(
         scrollLeft,
         columnWidth,
-        clientWidth
+        clientWidth,
+        columnCount - 1
       );
     } else {
       [minX, maxX] = [0, 0];
