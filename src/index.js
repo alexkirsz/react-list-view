@@ -80,7 +80,7 @@ export default class ReactListView extends React.Component {
 
   _getBoundaries(scroll, itemDimension, clientDimension) {
     let min = Math.floor(scroll / itemDimension);
-    let max = min + Math.ceil(clientDimension / itemDimension)
+    let max = min + Math.ceil(clientDimension / itemDimension);
     return [min, max];
   }
 
