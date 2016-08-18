@@ -168,7 +168,7 @@ export default class ReactListView extends React.Component {
           className="ReactListView-container"
           style={{
             overflow: 'hidden',
-            height: rowHeight !== 0 ? `${rowHeight * rowCount}px` : 'auto',
+            height: rowHeight !== 0 ? `${rowHeight * rowCount}px` : '100%',
             width: columnWidth !== 0 ? `${columnWidth * columnCount}px` : 'auto',
           }}
         >
