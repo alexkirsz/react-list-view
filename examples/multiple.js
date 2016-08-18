@@ -15,6 +15,7 @@ const MultipleExample = React.createClass({
   getInitialState() {
     return {
       clientHeight: 0,
+      clientWidth: 0,
       scrollTop: 0
     };
   },
@@ -22,6 +23,7 @@ const MultipleExample = React.createClass({
   componentDidMount() {
     this.setState({
       clientHeight: ReactDOM.findDOMNode(this).clientHeight,
+      clientWidth: ReactDOM.findDOMNode(this).clientWidth,
       scrollTop: ReactDOM.findDOMNode(this).scrollTop,
     });
   },
@@ -55,6 +57,7 @@ const MultipleExample = React.createClass({
             renderItem={this._renderItem}
             scrollTop={this.state.scrollTop}
             clientHeight={this.state.clientHeight}
+            clientWidth={this.state.clientWidth / 3}
           />
         </div>
         <div style={listStyle}>
@@ -64,6 +67,7 @@ const MultipleExample = React.createClass({
             renderItem={this._renderItem}
             scrollTop={this.state.scrollTop}
             clientHeight={this.state.clientHeight}
+            clientWidth={this.state.clientWidth / 3}
           />
         </div>
         <div style={listStyle}>
@@ -73,6 +77,7 @@ const MultipleExample = React.createClass({
             renderItem={this._renderItem}
             scrollTop={this.state.scrollTop}
             clientHeight={this.state.clientHeight}
+            clientWidth={this.state.clientWidth / 3}
           />
         </div>
       </div>
