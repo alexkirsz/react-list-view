@@ -1,7 +1,6 @@
 import React, {PropTypes} from 'react';
 import ReactDOM from 'react-dom';
 import createFragment from 'react-addons-create-fragment';
-import cx from 'classnames';
 
 import translate from './translate';
 
